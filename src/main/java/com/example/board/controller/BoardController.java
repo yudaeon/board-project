@@ -27,11 +27,14 @@ public class BoardController {
 
     //게시글 폼
     @PostMapping("board/writepro")
-    public String boardWritePro(Board board){
+    public String boardWritePro(Board board, Model model){
 
         boardService.write(board);
 
-        return "";
+        model.addAttribute("message","글 작성이 완료되었습니다.");
+        model.addAttribute("searchUrl","/board/list");
+
+        return "message";
     }
 
     //게시글 리스트
